@@ -30,7 +30,7 @@ def astar(grid, start, goal):
     return False
 
 
-# Grid
+
 grid = [[0]*10 for _ in range(10)]
 
 start = (0, 0)
@@ -40,16 +40,16 @@ current = start
 while current != goal:
     print("Current:", current)
 
-    # Add random dynamic obstacle
+    
     ox, oy = random.randint(0,9), random.randint(0,9)
     grid[ox][oy] = 1
 
-    # Try to find path again
+    
     if not astar(grid, current, goal):
         print("No path! Replanning...")
         continue
 
-    # Move toward goal (simple step)
+    
     x, y = current
     if x < goal[0]:
         next_step = (x+1, y)

@@ -1,16 +1,14 @@
 import heapq
 
 def dijkstra(graph, start):
-    
     dist = {node: float('inf') for node in graph}
     dist[start] = 0
 
-    pq = [(0, start)]  
+    pq = [(0, start)]
 
     while pq:
         current_dist, u = heapq.heappop(pq)
 
-        
         if current_dist > dist[u]:
             continue
 
@@ -24,10 +22,15 @@ def dijkstra(graph, start):
 
 
 graph = {
-    'A': [('B', 4), ('C', 2)],
-    'B': [('C', 5), ('D', 10)],
-    'C': [('D', 3)],
-    'D': []
+    "Hyderabad": [("Bangalore", 570), ("Chennai", 630)],
+    "Bangalore": [("Hyderabad", 570), ("Chennai", 350), ("Mumbai", 980)],
+    "Chennai": [("Hyderabad", 630), ("Bangalore", 350)],
+    "Mumbai": [("Bangalore", 980)]
 }
 
-print("Shortest distances:", dijkstra(graph, 'A'))
+start_city = "Hyderabad"
+result = dijkstra(graph, start_city)
+
+print("Shortest distances from", start_city)
+for city in result:
+    print(city, ":", result[city])

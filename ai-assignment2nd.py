@@ -8,13 +8,13 @@ def astar(grid, start, goal):
     parent = {}
 
     def heuristic(a, b):
-        return abs(a[0]-b[0]) + abs(a[1]-b[1])  # Manhattan
+        return abs(a[0]-b[0]) + abs(a[1]-b[1])  
 
     while pq:
         _, current = heapq.heappop(pq)
 
         if current == goal:
-            # Reconstruct path
+            
             path = []
             while current in parent:
                 path.append(current)
@@ -28,7 +28,7 @@ def astar(grid, start, goal):
             nx, ny = x+dx, y+dy
 
             if 0 <= nx < rows and 0 <= ny < cols:
-                if grid[nx][ny] == 1:  # obstacle
+                if grid[nx][ny] == 1:  
                     continue
 
                 new_cost = g_cost[current] + 1
@@ -42,7 +42,7 @@ def astar(grid, start, goal):
     return None
 
 
-# Example grid (0 = free, 1 = obstacle)
+
 grid = [[0]*10 for _ in range(10)]
 grid[4][5] = 1
 grid[5][5] = 1
